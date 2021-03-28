@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import classes from "./app.module.css";
+import Header from "./components/layout/header/Header";
+import {Switch, Route} from 'react-router-dom'
+import Main from "./components/main/Main";
+import Info from "./components/info/Info";
+import {Provider} from "react-redux";
+import {store} from "./redux/store";
+import ConverterContainer from "./components/conventer/ConverterContainer";
+import {useEffect} from "react";
+import {getAllCurrency} from "./redux/reducers/valuteReducer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+    useEffect(()=>{
+        getAllCurrency()
+    },[])
+    return (
+        <Provider store={store}>
+        <div>
+            <Header/>
+            <Switch>
+                <div className={classes.containerSwitch}>
+                    <Route path={'/main'}><Main/></Route>
+                    <Route path={'/conv'}><ConverterContainer/></Route>
+                    <Route path={'/info'}><Info/></Route>
+                </div>
+            </Switch>
+        </div>
+        </Provider>
+    )
 }
 
 export default App;

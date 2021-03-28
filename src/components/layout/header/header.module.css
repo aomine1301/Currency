@@ -1,0 +1,15 @@
+.container{
+    background: #1d588b;
+    height: 150px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.container a{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+}
+.container a:hover{
+    color: #ad0a22;
+}
