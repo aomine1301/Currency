@@ -12,9 +12,7 @@ import {getAllCurrency} from "./redux/reducers/valuteReducer";
 
 
 const App = () => {
-    useEffect(()=>{
-        getAllCurrency()
-    },[])
+
     return (
         <Provider store={store}>
         <div>

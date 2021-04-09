@@ -20,6 +20,7 @@ export const API = {
             ? key=wcQP8IKD2cKgy6gDajRCxZZSYryMid5s9uR5
             & output=JSON`)
                 .then(res => {
+                        console.log(res.data)
                     return res.data
                 }
                 )

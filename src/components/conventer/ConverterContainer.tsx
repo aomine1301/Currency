@@ -6,6 +6,7 @@ import {getAllCurrency} from "../../redux/reducers/valuteReducer";
 import {appStateType} from "../../redux/store";
 import {getCurrency} from "../selectors/selectors";
 import {CurrencyType} from "../../axios/typesAPI";
+import {useEffect} from "react";
 
 
 type mapStateProps = {
@@ -18,7 +19,9 @@ type mapDispatchProps = {
 export type ConverterContainerProps = mapDispatchProps & mapStateProps
 
 const ConverterContainer: React.FC<ConverterContainerProps> = ({getAllCurrency, currency}) => {
-
+    useEffect(()=>{
+        getAllCurrency()
+    },[])
     console.log(currency)
     return (
         <Converter getAllCurrency={getAllCurrency} currency={currency}/>
